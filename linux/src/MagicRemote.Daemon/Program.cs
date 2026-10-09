@@ -4,6 +4,7 @@ using MagicRemote.Daemon;
 using MagicRemote.Daemon.Monitors;
 using MagicRemote.Daemon.Power;
 using MagicRemote.Daemon.Sessions;
+using MagicRemote.InputEngine;
 using MagicRemote.Ipc;
 
 bool dryRun = args.Contains("--dry-run");
@@ -40,7 +41,17 @@ logger.Log($"Control socket listening at {controlSocketPath}");
 CommandRunner commandRunner = new(controlSocket, logger);
 
 BindsEngine bindsEngine = new();
-using InputClientMessageHandler handler = new(bindsEngine, powerService, monitorGeometry, commandRunner, config.Tvs, logger);
-
-await using WebSocketServer server = new(port, handler, logger);
-await server.RunAsync(cts.Token);
+InputClientMessageHandler handler;
+try {
+	handler = new(bindsEngine, powerService, monitorGeometry, commandRunner, config.Tvs, logger);
+} catch(UinputException e) {
+	// Without uinput the daemon can't do anything useful. Exit cleanly (systemd retries) instead of
+	// crashing with a core dump on every restart, and point at the usual cause.
+	logger.Log($"{e.Message}. Check that this user can open /dev/uinput (ls -l /dev/uinput): another udev rule may have overridden its group, see SupplementaryGroups in magicremoteservice.service.");
+	return 1;
+}
+using(handler) {
+	await using WebSocketServer server = new(port, handler, logger);
+	await server.RunAsync(cts.Token);
+}
+return 0;

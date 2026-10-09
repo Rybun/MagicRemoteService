@@ -7,6 +7,11 @@ After=network.target
 Type=simple
 User=magicremote
 Group=magicremote
+# Also join the distro's 'input' group. Our udev rule (71-magicremoteservice.rules) sets uinput's group
+# to magicremote, but any later-ordered rule from another tool (Sunshine, Wolf, Steam...) that sets
+# GROUP="input" on uinput silently overrides it, and the daemon then dies with EACCES on startup.
+# Being in both groups keeps uinput reachable whichever rule wins.
+SupplementaryGroups=input
 # Creates /run/magicremoteservice, owned by magicremote:magicremote, for the control socket and for
 # monitors.json — see MagicRemote.Ipc.ControlSocketPaths and MagicRemote.Core.Monitors.MonitorFilePaths
 # for why these replaced each user's own $XDG_RUNTIME_DIR (that's mode 0700 and owned by that user
