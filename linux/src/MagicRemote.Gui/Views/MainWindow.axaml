@@ -1,0 +1,169 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MagicRemote.Gui.ViewModels"
+        x:Class="MagicRemote.Gui.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="{Binding Loc[AppTitle]}" Width="760" Height="640">
+	<Grid Margin="12" RowDefinitions="Auto,*,Auto">
+		<StackPanel Grid.Row="0" Spacing="6">
+			<TextBlock Text="{Binding Loc[GlobalSettingsLabel]}" FontWeight="Bold" />
+			<StackPanel Orientation="Horizontal" Spacing="12">
+				<StackPanel Orientation="Horizontal" Spacing="4">
+					<TextBlock Text="{Binding Loc[PortLabel]}" VerticalAlignment="Center" />
+					<NumericUpDown Value="{Binding Port}" Minimum="1" Maximum="65535" Width="150" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Spacing="4">
+					<CheckBox Content="{Binding Loc[InactivityShutdownLabel]}" IsChecked="{Binding InactivityEnabled}" />
+					<NumericUpDown Value="{Binding InactivityTimeoutSeconds}" Minimum="0" Width="120"
+					                IsEnabled="{Binding InactivityEnabled}" />
+					<TextBlock Text="{Binding Loc[SecondsSuffix]}" VerticalAlignment="Center" />
+				</StackPanel>
+				<CheckBox Content="{Binding Loc[ServiceAutostartLabel]}" IsChecked="{Binding ServiceAutostartEnabled}"
+				          VerticalAlignment="Center" ToolTip.Tip="{Binding Loc[ServiceAutostartTooltip]}" />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Spacing="4">
+				<TextBlock Text="{Binding Loc[IconBorderColorLabel]}" VerticalAlignment="Center" />
+				<Button Width="40" Height="26" Padding="0" BorderThickness="1">
+					<Button.Background>
+						<SolidColorBrush Color="{Binding IconBorderColorValue}" />
+					</Button.Background>
+					<Button.Flyout>
+						<Flyout Placement="Bottom">
+							<StackPanel Width="220" Spacing="8" Margin="4">
+								<Border Height="36" CornerRadius="4" BorderThickness="1" BorderBrush="Gray">
+									<Border.Background>
+										<SolidColorBrush Color="{Binding IconBorderColorValue}" />
+									</Border.Background>
+								</Border>
+								<Grid ColumnDefinitions="16,*,32" RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+									<TextBlock Grid.Row="0" Grid.Column="0" Text="R" VerticalAlignment="Center" />
+									<Slider Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="255" Value="{Binding IconBorderColorR}" />
+									<TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding IconBorderColorR}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="1" Grid.Column="0" Text="G" VerticalAlignment="Center" />
+									<Slider Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="255" Value="{Binding IconBorderColorG}" />
+									<TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding IconBorderColorG}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="2" Grid.Column="0" Text="B" VerticalAlignment="Center" />
+									<Slider Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="255" Value="{Binding IconBorderColorB}" />
+									<TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding IconBorderColorB}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+								</Grid>
+								<TextBox Text="{Binding IconBorderColor}" Watermark="#FFFFFF" />
+							</StackPanel>
+						</Flyout>
+					</Button.Flyout>
+				</Button>
+			</StackPanel>
+			<Separator Margin="0,8" />
+			<Grid ColumnDefinitions="*,Auto">
+				<TextBlock Grid.Column="0" Text="{Binding Loc[TvsLabel]}" FontWeight="Bold" VerticalAlignment="Center" />
+				<StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6">
+					<Button Content="{Binding Loc[AddLabel]}" Command="{Binding AddTvCommand}" />
+					<Button Content="{Binding Loc[RemoveLabel]}" Command="{Binding RemoveSelectedTvCommand}" />
+				</StackPanel>
+			</Grid>
+		</StackPanel>
+
+		<Grid Grid.Row="1" Margin="0,8" ColumnDefinitions="220,*">
+			<ListBox Grid.Column="0" ItemsSource="{Binding Tvs}" SelectedItem="{Binding SelectedTv}">
+				<ListBox.ItemTemplate>
+					<DataTemplate x:DataType="vm:TvProfileViewModel">
+						<TextBlock Text="{Binding Id}" />
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+
+			<!-- Fields bind through SelectedTv.* directly (rather than re-pointing this panel's own
+			     DataContext at SelectedTv) so Loc[...] bindings here still resolve against
+			     MainWindowViewModel — a sibling DataContext override bit us once already, see the
+			     IsVisible/DataContext clash this replaced. -->
+			<Border Grid.Column="1" IsVisible="{Binding SelectedTv, Converter={x:Static ObjectConverters.IsNotNull}}">
+			<TabControl>
+				<TabItem Header="{Binding Loc[SettingsTabLabel]}">
+				<ScrollViewer>
+				<StackPanel Margin="12,0,12,0" Spacing="6">
+					<TextBlock Text="{Binding Loc[SelectedTvLabel]}" FontWeight="Bold" />
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[NameLabel]}" Width="90" VerticalAlignment="Center" />
+						<TextBox Text="{Binding SelectedTv.Id}" Width="220" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[PcIpLabel]}" Width="90" VerticalAlignment="Center" />
+						<TextBox Text="{Binding SelectedTv.SendIp}" Width="220" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[PcPortLabel]}" Width="90" VerticalAlignment="Center" />
+						<NumericUpDown Value="{Binding SelectedTv.SendPort}" Minimum="1" Maximum="65535" Width="220" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[PcMacLabel]}" Width="90" VerticalAlignment="Center" />
+						<TextBox Text="{Binding SelectedTv.PcMac}" Width="220" Watermark="AA:BB:CC:DD:EE:FF" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[DisplayLabel]}" Width="90" VerticalAlignment="Center" />
+						<ComboBox Width="220" ItemsSource="{Binding AvailableDisplays}"
+						          SelectedValue="{Binding SelectedTv.Display}" SelectedValueBinding="{Binding Index}"
+						          SelectionChanged="OnDisplaySelectionChanged">
+							<ComboBox.ItemTemplate>
+								<DataTemplate x:DataType="vm:DisplayOption">
+									<TextBlock Text="{Binding Label}" />
+								</DataTemplate>
+							</ComboBox.ItemTemplate>
+						</ComboBox>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[LongClickLabel]}" Width="90" VerticalAlignment="Center" />
+						<NumericUpDown Value="{Binding SelectedTv.LongClickMs}" Minimum="0" Width="220" />
+						<TextBlock Text="{Binding Loc[MillisecondsSuffix]}" VerticalAlignment="Center" />
+					</StackPanel>
+					<CheckBox Content="{Binding Loc[OverlayLabel]}" IsChecked="{Binding SelectedTv.Overlay}" />
+					<CheckBox Content="{Binding Loc[InputDirectLabel]}" IsChecked="{Binding SelectedTv.InputDirect}" />
+					<CheckBox Content="{Binding Loc[ExtendLabel]}" IsChecked="{Binding SelectedTv.Extend}" />
+					<Button Content="{Binding Loc[CaptureTestKeyLabel]}" Click="OnCaptureTestKeyClick" Margin="0,8,0,0" />
+
+					<Separator Margin="0,8" />
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[InputSlotLabel]}" Width="90" VerticalAlignment="Center" />
+						<ComboBox Width="220" ItemsSource="{Binding AvailableInputSlots}" SelectedItem="{Binding SelectedTv.InputId}" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<TextBlock Text="{Binding Loc[PairedDeviceLabel]}" Width="90" VerticalAlignment="Center" />
+						<ComboBox Width="220" ItemsSource="{Binding AvailablePairedDevices}" SelectedItem="{Binding SelectedTv.AresDeviceName}" />
+						<Button Content="{Binding Loc[RefreshDevicesLabel]}" Command="{Binding RefreshPairedDevicesCommand}" />
+					</StackPanel>
+					<Button Content="{Binding Loc[InstallToTvLabel]}" Command="{Binding InstallToTvCommand}"
+					        IsEnabled="{Binding !IsInstallingToTv}" Margin="0,4,0,8" />
+				</StackPanel>
+				</ScrollViewer>
+				</TabItem>
+
+				<TabItem Header="{Binding Loc[RemoteTabLabel]}">
+				<ScrollViewer>
+				<ItemsControl Margin="12,8,12,8" ItemsSource="{Binding SelectedTv.RemoteBinds}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate x:DataType="vm:RemoteBindRowViewModel">
+							<Button Margin="4" Padding="8" MinWidth="110" Click="OnEditBindClick" Tag="{Binding}">
+								<StackPanel Spacing="2">
+									<TextBlock Text="{Binding Label}" FontWeight="Bold" HorizontalAlignment="Center" />
+									<TextBlock Text="{Binding Summary}" FontSize="11" HorizontalAlignment="Center"
+									           TextWrapping="Wrap" MaxWidth="110" Opacity="0.8" />
+								</StackPanel>
+							</Button>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+				</ScrollViewer>
+				</TabItem>
+			</TabControl>
+			</Border>
+		</Grid>
+
+		<Grid Grid.Row="2" ColumnDefinitions="*,Auto">
+			<TextBlock Grid.Column="0" Text="{Binding StatusMessage}" VerticalAlignment="Center" Opacity="0.7" />
+			<Button Grid.Column="1" Content="{Binding Loc[SaveLabel]}" Command="{Binding SaveCommand}" />
+		</Grid>
+	</Grid>
+</Window>

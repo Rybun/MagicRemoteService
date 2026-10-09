@@ -1,0 +1,20 @@
+[Unit]
+Description=MagicRemoteService GUI (tray icon, settings)
+After=graphical-session.target
+
+[Service]
+Type=simple
+# __APPIMAGE_PATH__ is substituted by install.sh --gui-appimage at install time. --background
+# skips showing the settings window on this (login-time) launch — it goes straight to the tray,
+# same as if the user had opened it once and clicked away.
+ExecStart=__APPIMAGE_PATH__ --background
+# Avalonia's Linux tray-icon D-Bus integration has a known intermittent upstream crash
+# (Tmds.DBus.Protocol disconnect racing Avalonia's dispatcher — see AvaloniaUI/Avalonia#17616,
+# #11494, #18703; not something this project can fix from the outside). Restart-on-crash is the
+# pragmatic mitigation: a clean user-initiated Quit exits 0 and is NOT restarted, only a genuine
+# crash (non-zero exit / signal) triggers a respawn.
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

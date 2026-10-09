@@ -1,0 +1,8 @@
+{
+	"id": "com.cathwyler.magicremoteservice.service",
+	"services": [
+		{
+			"name": "com.cathwyler.magicremoteservice.service"
+		}
+	]
+}

@@ -1,0 +1,28 @@
+[Unit]
+Description=MagicRemoteService daemon (LG Magic Remote control)
+Documentation=https://github.com/Cathwyler/MagicRemoteService
+After=network.target
+
+[Service]
+Type=simple
+User=magicremote
+Group=magicremote
+# Creates /run/magicremoteservice, owned by magicremote:magicremote, for the control socket and for
+# monitors.json — see MagicRemote.Ipc.ControlSocketPaths and MagicRemote.Core.Monitors.MonitorFilePaths
+# for why these replaced each user's own $XDG_RUNTIME_DIR (that's mode 0700 and owned by that user
+# alone, which this daemon's own distinct system user has no permission to write into at all).
+# Mode 0775 (not the RuntimeDirectory default 0755): members of the magicremote group — the GUI's
+# user, once added via install.sh --gui-user — need to create their own monitors-{uid}.json here too.
+RuntimeDirectory=magicremoteservice
+RuntimeDirectoryMode=0775
+ExecStart=/opt/magicremoteservice/MagicRemote.Daemon
+Restart=on-failure
+RestartSec=3
+# uinput access comes from the udev rule (group magicremote); no elevated capabilities needed.
+NoNewPrivileges=true
+
+[Install]
+# multi-user.target is reached at boot before any graphical login, so the daemon (and therefore
+# uinput-based control) is available from the login screen onward — same guarantee the original
+# got from being a Windows service starting in session 0.
+WantedBy=multi-user.target

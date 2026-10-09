@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="MagicRemote.Cli.Tests" />
+  </ItemGroup>
+
+  <!-- The webOS TV app's own resources (main.js, index.html, icons, webOSTVjs, service.js...) are
+       platform-agnostic JS/webOS assets — untouched by this port, just relocated here and embedded
+       so AppExtractor can read them from the assembly instead of Windows-only .resx-embedded
+       Properties.Resources.* fields. -->
+  <ItemGroup>
+    <EmbeddedResource Include="TvTemplates\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="using:MagicRemote.Gui.Localization"
+        x:Class="MagicRemote.Gui.Views.BindCreatorWindow"
+        x:DataType="loc:ILocalizationService"
+        Title="{Binding [CaptureKeyTitle]}" Width="360" Height="160"
+        CanResize="False" WindowStartupLocation="CenterOwner">
+	<StackPanel Margin="20" Spacing="12" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<TextBlock Text="{Binding [PressAnyKeyLabel]}" FontSize="16" HorizontalAlignment="Center" />
+		<TextBlock x:Name="CapturedTextBlock" HorizontalAlignment="Center" FontWeight="Bold" MinHeight="20" />
+		<Button Content="{Binding [CancelLabel]}" HorizontalAlignment="Center" Click="OnCancelClick" />
+	</StackPanel>
+</Window>

@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MagicRemote.Gui.Views.CursorOverlayWindow"
+        SystemDecorations="None"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        ShowInTaskbar="False"
+        Topmost="True"
+        CanResize="False"
+        Focusable="False"
+        WindowStartupLocation="Manual"
+        Width="32" Height="32">
+	<!-- Simple arrow cursor drawn procedurally; the original's Resources/MagicRemoteService.cur
+	     bitmap could be swapped in here later, this is not a hard requirement for the MVP. -->
+	<Path Data="M 2,2 L 2,26 L 9,20 L 13,28 L 17,26 L 13,18 L 22,18 Z"
+	      Fill="White" Stroke="Black" StrokeThickness="1.5" StrokeLineCap="Round" StrokeJoin="Round" />
+</Window>

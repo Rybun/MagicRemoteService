@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# AppImage entry point: runs the self-contained, unsandboxed GUI binary. No portable-app sandboxing
+# here by design (see the plan notes on why Flatpak was ruled out) — this just needs to reach the
+# daemon's control socket and read/write ~/.config/magicremoteservice, both of which a normal
+# unsandboxed process can already do.
+HERE="$(dirname "$(readlink -f "${0}")")"
+exec "$HERE/usr/bin/MagicRemote.Gui" "$@"

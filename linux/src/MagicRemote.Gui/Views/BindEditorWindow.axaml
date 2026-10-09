@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="using:MagicRemote.Gui.Localization"
+        x:Class="MagicRemote.Gui.Views.BindEditorWindow"
+        x:DataType="loc:ILocalizationService"
+        Title="{Binding [BindEditorTitle]}" Width="380" Height="440"
+        CanResize="False" WindowStartupLocation="CenterOwner">
+	<StackPanel Margin="16" Spacing="10">
+		<TextBlock x:Name="KeyLabelTextBlock" FontWeight="Bold" FontSize="15" />
+
+		<StackPanel Orientation="Horizontal" Spacing="12">
+			<RadioButton x:Name="MouseRadio" GroupName="Kind" Content="{Binding [BindKindMouseLabel]}" Checked="OnKindChanged" />
+			<RadioButton x:Name="KeyboardRadio" GroupName="Kind" Content="{Binding [BindKindKeyboardLabel]}" Checked="OnKindChanged" />
+			<RadioButton x:Name="ActionRadio" GroupName="Kind" Content="{Binding [BindKindActionLabel]}" Checked="OnKindChanged" />
+			<RadioButton x:Name="CommandRadio" GroupName="Kind" Content="{Binding [BindKindCommandLabel]}" Checked="OnKindChanged" />
+		</StackPanel>
+
+		<Separator />
+
+		<StackPanel x:Name="MousePanel" Spacing="6" IsVisible="False">
+			<RadioButton x:Name="MouseLeftRadio" GroupName="MouseButton" Content="{Binding [MouseLeftLabel]}" />
+			<RadioButton x:Name="MouseRightRadio" GroupName="MouseButton" Content="{Binding [MouseRightLabel]}" />
+			<RadioButton x:Name="MouseMiddleRadio" GroupName="MouseButton" Content="{Binding [MouseMiddleLabel]}" />
+		</StackPanel>
+
+		<StackPanel x:Name="KeyboardPanel" Spacing="8" IsVisible="False">
+			<Border BorderThickness="1" BorderBrush="Gray" CornerRadius="4" Padding="10" MinHeight="40">
+				<TextBlock x:Name="CapturedKeysTextBlock" TextWrapping="Wrap" FontWeight="Bold" />
+			</Border>
+			<Button x:Name="CaptureToggleButton" Click="OnCaptureToggleClick" HorizontalAlignment="Left" />
+		</StackPanel>
+
+		<StackPanel x:Name="ActionPanel" Spacing="6" IsVisible="False">
+			<ComboBox x:Name="ActionComboBox" Width="260" />
+		</StackPanel>
+
+		<StackPanel x:Name="CommandPanel" Spacing="6" IsVisible="False">
+			<TextBox x:Name="CommandTextBox" Width="300" Watermark="{Binding [CommandWatermark]}" />
+		</StackPanel>
+
+		<TextBlock x:Name="ValidationTextBlock" Foreground="OrangeRed" TextWrapping="Wrap" />
+
+		<Separator />
+
+		<Grid ColumnDefinitions="*,Auto,Auto">
+			<Button Grid.Column="0" Content="{Binding [ResetToDefaultLabel]}" Click="OnResetClick" />
+			<Button Grid.Column="1" Content="{Binding [CancelLabel]}" Click="OnCancelClick" Margin="0,0,8,0" />
+			<Button Grid.Column="2" Content="{Binding [SaveLabel]}" Click="OnSaveClick" />
+		</Grid>
+	</StackPanel>
+</Window>

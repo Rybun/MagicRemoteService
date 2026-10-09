@@ -1,0 +1,20 @@
+{
+	"id": "com.cathwyler.magicremoteservice",
+	"main": "index.html",
+	"title": "MagicRemoteService",
+	"icon": "icon.png",
+	"miniIcon": "miniIcon.png",
+	"largeIcon": "largeIcon.png",
+	"type": "web",
+	"vendor": "Cathwyler",
+	"version": "1.0.0",
+	"bgColor": "#575E66",
+	"iconColor": "#575E66",
+	"appDescription": "HDMI",
+	"appDescriptionLong": "Service providing computer remote control using a LG WebOS TV",
+	"disableBackHistoryAPI": true,
+	"transparent": true,
+	"defaultWindowType": "floating",
+	"noSplashOnLaunch": true,
+	"supportGIP": true
+}

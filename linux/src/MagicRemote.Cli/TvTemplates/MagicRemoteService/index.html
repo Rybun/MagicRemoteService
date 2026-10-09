@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>MagicRemoteService</title>
+	<style type="text/css">
+		@font-face {
+			font-family: Sandstone;
+			src: url("MuseoSans-Medium.ttf");
+		}
+		* {
+			font-family: Sandstone;
+			text-overflow: ellipsis;
+		}
+
+		body {
+			margin:0;
+			padding:0;
+		}
+
+		.screen {
+			position: fixed;
+			pointer-events: none;
+			
+			height: 100%;
+			width: 100%;
+		}
+
+		div.flex {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-flow: row wrap;
+			flex-flow: row wrap;
+			/*gap: 1rem; chrome < 84*/
+		}
+		div.justify-flex-start {
+			-webkit-justify-content: start;
+			justify-content: start;
+		}
+		div.justify-center {
+			-webkit-justify-content: center;
+			justify-content: center;
+		}
+		div.justify-flex-end {
+			-webkit-justify-content: flex-end;
+			justify-content: flex-end;
+		}
+		div.align-flex-start {
+			-webkit-align-items: flex-start;
+			align-items: flex-start;
+		}
+		div.align-center {
+			-webkit-align-items: center;
+			align-items: center;
+		}
+		div.align-flex-end {
+  			-webkit-align-items: flex-end;
+			align-items: flex-end;
+		}
+		
+		div.window {
+			margin: 1.5rem;
+			pointer-events: auto;
+			border-radius: .5rem;
+			background: #575E66;
+			color: #E6E6E6;
+		}
+		div.title {
+			margin: 1.5rem;
+			font-weight: bold;
+			font-size: 3rem;
+		}
+		div.message {
+			margin: 1.5rem;
+			font-size: 1.5rem;
+		}
+		div.button {
+			margin: 1.5rem 0.5rem 0.5rem 1.5rem; /*gap: 1rem; chrome < 84*/
+		}
+		div.button button {
+			margin: 0 1rem 1rem 0; /*gap: 1rem; chrome < 84*/
+			padding: 1rem;
+			min-width: 15rem;
+			max-width: 50%;
+			font-size: 1.5rem;
+		}
+		
+		#title{
+			-webkit-transform: translateY(-100%);
+			transform: translateY(-100%);
+			color: #E6E6E6;
+		}
+		#keyboard {
+			opacity: 0;
+		}
+		#video {
+			pointer-events: auto;
+			height: 100%;
+			width: 100%;
+		}
+		#uncaught {
+			white-space: pre-wrap;
+			color: #E6E6E6;
+		}
+		div.dialog {
+			min-width: 30%;
+			max-width: 50%;
+		}
+		div.toast {
+			min-width: 30%;
+			max-width: 80%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="screen flex justify-center">
+		<h1 id="title">MagicRemoteService</h1>
+	</div>
+	<div class="screen">
+		<input id="keyboard" type="text" />
+	</div>
+	<div class="screen">
+		<video id="video" autoplay></video>
+	</div>
+	<div class="screen">
+		<div id="uncaught"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.addEventListener("error", function(oEvent) {
+			document.getElementById("uncaught").innerText += "\n" + oEvent.message + "\nSource : " + oEvent.filename + "\nLine : " + oEvent.lineno + "\nColumn : " + oEvent.colno + "\nError  : " + oEvent.error;
+		});
+	</script>
+	<script type="text/javascript" src="webOSTVjs-1.2.13/webOSTV.js" charset="utf-8"></script>
+	<script type="text/javascript" src="webOSTVjs-1.2.13/webOSTV-dev.js" charset="utf-8"></script>
+	<script type="text/javascript" src="main.js" charset="utf-8"></script>
+</body>
+
+</html>

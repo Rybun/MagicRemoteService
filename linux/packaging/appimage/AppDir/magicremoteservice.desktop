@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MagicRemoteService
+Comment=Configure and control MagicRemoteService
+Exec=MagicRemote.Gui
+Icon=magicremoteservice
+Terminal=false
+Categories=Utility;Settings;

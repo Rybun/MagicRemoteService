@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppTitle" xml:space="preserve"><value>MagicRemoteService</value></data>
+  <data name="GlobalSettingsLabel" xml:space="preserve"><value>Paramètres globaux</value></data>
+  <data name="PortLabel" xml:space="preserve"><value>Port</value></data>
+  <data name="InactivityShutdownLabel" xml:space="preserve"><value>Arrêt pour inactivité</value></data>
+  <data name="ServiceAutostartLabel" xml:space="preserve"><value>Démarrer au démarrage</value></data>
+  <data name="ServiceAutostartTooltip" xml:space="preserve"><value>Démarre le service en arrière-plan automatiquement au démarrage de l'ordinateur. Cette modification demandera les droits administrateur.</value></data>
+  <data name="EnablingAutostartLabel" xml:space="preserve"><value>Activation du démarrage automatique…</value></data>
+  <data name="DisablingAutostartLabel" xml:space="preserve"><value>Désactivation du démarrage automatique…</value></data>
+  <data name="AutostartEnabledLabel" xml:space="preserve"><value>Démarrage automatique activé</value></data>
+  <data name="AutostartDisabledLabel" xml:space="preserve"><value>Démarrage automatique désactivé</value></data>
+  <data name="AutostartChangeFailedLabel" xml:space="preserve"><value>Impossible de modifier le démarrage automatique (permission refusée ou annulée)</value></data>
+  <data name="SecondsSuffix" xml:space="preserve"><value>s</value></data>
+  <data name="MillisecondsSuffix" xml:space="preserve"><value>ms</value></data>
+  <data name="IconBorderColorLabel" xml:space="preserve"><value>Couleur de bordure de l'icône</value></data>
+  <data name="TvsLabel" xml:space="preserve"><value>TVs</value></data>
+  <data name="AddLabel" xml:space="preserve"><value>Ajouter</value></data>
+  <data name="RemoveLabel" xml:space="preserve"><value>Supprimer</value></data>
+  <data name="SelectedTvLabel" xml:space="preserve"><value>TV sélectionnée</value></data>
+  <data name="NameLabel" xml:space="preserve"><value>Nom</value></data>
+  <data name="PcIpLabel" xml:space="preserve"><value>IP du PC (envoyée à l'appli TV)</value></data>
+  <data name="PcPortLabel" xml:space="preserve"><value>Port du PC</value></data>
+  <data name="PcMacLabel" xml:space="preserve"><value>MAC du PC</value></data>
+  <data name="DisplayLabel" xml:space="preserve"><value>Écran</value></data>
+  <data name="LongClickLabel" xml:space="preserve"><value>Clic long</value></data>
+  <data name="OverlayLabel" xml:space="preserve"><value>Superposition</value></data>
+  <data name="InputDirectLabel" xml:space="preserve"><value>Entrée directe</value></data>
+  <data name="ExtendLabel" xml:space="preserve"><value>Étendre</value></data>
+  <data name="CaptureTestKeyLabel" xml:space="preserve"><value>Capturer une touche de test...</value></data>
+  <data name="InputSlotLabel" xml:space="preserve"><value>Emplacement HDMI</value></data>
+  <data name="PairedDeviceLabel" xml:space="preserve"><value>TV appairée</value></data>
+  <data name="RefreshDevicesLabel" xml:space="preserve"><value>Actualiser</value></data>
+  <data name="InstallToTvLabel" xml:space="preserve"><value>Installer sur la TV</value></data>
+  <data name="InstallingToTvLabel" xml:space="preserve"><value>Installation sur la TV...</value></data>
+  <data name="InstallToTvSucceededLabel" xml:space="preserve"><value>Installée et enregistrée comme entrée vidéo.</value></data>
+  <data name="InstallToTvFailedLabel" xml:space="preserve"><value>Échec de l'installation :</value></data>
+  <data name="NoPairedDeviceSelectedLabel" xml:space="preserve"><value>Choisissez d'abord une TV appairée.</value></data>
+  <data name="RefreshDevicesFailedLabel" xml:space="preserve"><value>Impossible de lister les TV appairées (le CLI webOS est-il installé ?) :</value></data>
+  <data name="SaveLabel" xml:space="preserve"><value>Enregistrer</value></data>
+  <data name="CaptureKeyTitle" xml:space="preserve"><value>Capturer une touche</value></data>
+  <data name="PressAnyKeyLabel" xml:space="preserve"><value>Appuyez sur une touche de votre clavier...</value></data>
+  <data name="CancelLabel" xml:space="preserve"><value>Annuler</value></data>
+
+  <data name="SettingsTabLabel" xml:space="preserve"><value>Paramètres</value></data>
+  <data name="RemoteTabLabel" xml:space="preserve"><value>Télécommande</value></data>
+  <data name="RemoteKeyClick" xml:space="preserve"><value>Clic</value></data>
+  <data name="RemoteKeyRightClick" xml:space="preserve"><value>Clic droit</value></data>
+  <data name="RemoteKeyBackspace" xml:space="preserve"><value>Retour arrière</value></data>
+  <data name="RemoteKeyOk" xml:space="preserve"><value>OK</value></data>
+  <data name="RemoteKeyVolumeUp" xml:space="preserve"><value>Volume +</value></data>
+  <data name="RemoteKeyVolumeDown" xml:space="preserve"><value>Volume -</value></data>
+  <data name="RemoteKeyLeft" xml:space="preserve"><value>Gauche</value></data>
+  <data name="RemoteKeyUp" xml:space="preserve"><value>Haut</value></data>
+  <data name="RemoteKeyRight" xml:space="preserve"><value>Droite</value></data>
+  <data name="RemoteKeyDown" xml:space="preserve"><value>Bas</value></data>
+  <data name="RemoteKeyDigit0" xml:space="preserve"><value>0</value></data>
+  <data name="RemoteKeyDigit1" xml:space="preserve"><value>1</value></data>
+  <data name="RemoteKeyDigit2" xml:space="preserve"><value>2</value></data>
+  <data name="RemoteKeyDigit3" xml:space="preserve"><value>3</value></data>
+  <data name="RemoteKeyDigit4" xml:space="preserve"><value>4</value></data>
+  <data name="RemoteKeyDigit5" xml:space="preserve"><value>5</value></data>
+  <data name="RemoteKeyDigit6" xml:space="preserve"><value>6</value></data>
+  <data name="RemoteKeyDigit7" xml:space="preserve"><value>7</value></data>
+  <data name="RemoteKeyDigit8" xml:space="preserve"><value>8</value></data>
+  <data name="RemoteKeyDigit9" xml:space="preserve"><value>9</value></data>
+  <data name="RemoteKeyRed" xml:space="preserve"><value>Rouge</value></data>
+  <data name="RemoteKeyGreen" xml:space="preserve"><value>Vert</value></data>
+  <data name="RemoteKeyYellow" xml:space="preserve"><value>Jaune</value></data>
+  <data name="RemoteKeyBlue" xml:space="preserve"><value>Bleu</value></data>
+  <data name="RemoteKeyBack" xml:space="preserve"><value>Retour</value></data>
+  <data name="RemoteKeyPlay" xml:space="preserve"><value>Lecture</value></data>
+  <data name="RemoteKeyPause" xml:space="preserve"><value>Pause</value></data>
+  <data name="RemoteKeyNext" xml:space="preserve"><value>Suivant</value></data>
+  <data name="RemoteKeyPrevious" xml:space="preserve"><value>Précédent</value></data>
+  <data name="RemoteKeyStop" xml:space="preserve"><value>Arrêt</value></data>
+
+  <data name="BindEditorTitle" xml:space="preserve"><value>Modifier l'association</value></data>
+  <data name="BindKindMouseLabel" xml:space="preserve"><value>Souris</value></data>
+  <data name="BindKindKeyboardLabel" xml:space="preserve"><value>Clavier</value></data>
+  <data name="BindKindActionLabel" xml:space="preserve"><value>Action</value></data>
+  <data name="BindKindCommandLabel" xml:space="preserve"><value>Commande</value></data>
+  <data name="MouseLeftLabel" xml:space="preserve"><value>Clic gauche</value></data>
+  <data name="MouseRightLabel" xml:space="preserve"><value>Clic droit</value></data>
+  <data name="MouseMiddleLabel" xml:space="preserve"><value>Clic central</value></data>
+  <data name="ActionShutdownLabel" xml:space="preserve"><value>Éteindre le PC</value></data>
+  <data name="ActionToggleKeyboardLabel" xml:space="preserve"><value>Afficher/masquer le clavier à l'écran</value></data>
+  <data name="CommandWatermark" xml:space="preserve"><value>commande shell...</value></data>
+  <data name="CommandPrefixLabel" xml:space="preserve"><value>Commande :</value></data>
+  <data name="StartCaptureLabel" xml:space="preserve"><value>Démarrer la capture</value></data>
+  <data name="StopCaptureLabel" xml:space="preserve"><value>Arrêter la capture</value></data>
+  <data name="CapturingKeysLabel" xml:space="preserve"><value>Appuyez sur des touches...</value></data>
+  <data name="NoKeysYetLabel" xml:space="preserve"><value>(aucune touche capturée)</value></data>
+  <data name="ResetToDefaultLabel" xml:space="preserve"><value>Réinitialiser par défaut</value></data>
+  <data name="BindUnassignedLabel" xml:space="preserve"><value>(non assigné)</value></data>
+  <data name="DefaultSuffixLabel" xml:space="preserve"><value>(par défaut)</value></data>
+  <data name="CustomSuffixLabel" xml:space="preserve"><value>(personnalisé)</value></data>
+  <data name="TrayOpenLabel" xml:space="preserve"><value>Ouvrir</value></data>
+  <data name="TrayQuitLabel" xml:space="preserve"><value>Quitter</value></data>
+</root>

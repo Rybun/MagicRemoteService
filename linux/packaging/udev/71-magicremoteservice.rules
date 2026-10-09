@@ -1,0 +1,4 @@
+# Grants the magicremote system user (see packaging/install.sh) access to /dev/uinput, needed by
+# MagicRemote.InputEngine to create the virtual mouse/keyboard devices. Without this rule uinput is
+# root:input 0660 on most distros, which a dedicated system user isn't a member of by default.
+KERNEL=="uinput", GROUP="magicremote", MODE="0660"
